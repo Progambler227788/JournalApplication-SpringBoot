@@ -1,14 +1,36 @@
 package com.talha.journal.entity;
 
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
+import java.util.Date;
+
+@Document(collection = "journal_entities")
 public class JournalEntity {
-    private  long journalId;
+
+    @Id
+    // take ObjectId type
+    private ObjectId journalId;
     private  String journalContent;
     private  String journalTitle;
 
-    public JournalEntity(long journalId, String journalContent, String journalTitle){
-        this.journalId = journalId;
-        this.journalContent = journalContent;
-        this.journalTitle = journalTitle;
+    private LocalDateTime date;
+
+//    public JournalEntity( String  journalId, String journalContent, String journalTitle, Date date){
+//        this.journalId = journalId;
+//        this.journalContent = journalContent;
+//        this.journalTitle = journalTitle;
+//        this.date = date;
+//    }
+
+    public LocalDateTime  getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDateTime  date) {
+        this.date = date;
     }
 
     public String getJournalContent() {
@@ -19,11 +41,11 @@ public class JournalEntity {
         this.journalContent = journalContent;
     }
 
-    public long getJournalId() {
+    public ObjectId getJournalId() {
         return journalId;
     }
 
-    public void setJournalId(long journalId) {
+    public void setJournalId( ObjectId journalId) {
         this.journalId = journalId;
     }
 
