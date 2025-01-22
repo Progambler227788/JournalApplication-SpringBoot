@@ -6,6 +6,7 @@ import com.talha.journal.repository.JournalEntryRepository;
 import com.talha.journal.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -18,10 +19,11 @@ public class UserEntityService {
     @Autowired
     private UserRepository userRepository;
 
-    private  static final PasswordEncoder encodePass = new BCryptPasswordEncoder();
+//    @Lazy
+//    private BCryptPasswordEncoder passwordEncoder;
 
     public void saveNewUser(User object){
-        object.setPassword(encodePass.encode(object.getPassword()));
+//        object.setPassword(passwordEncoder.encode(object.getPassword()));
         object.setRoles(Arrays.asList("USER"));
         userRepository.save(object);
     }

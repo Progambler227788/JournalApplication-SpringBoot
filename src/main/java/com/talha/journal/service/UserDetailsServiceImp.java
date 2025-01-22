@@ -8,7 +8,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
-
+// The UserDetailsService interface is used by Spring Security
+// to fetch user details from a custom source (like a database) when authenticating a user
 @Component
 public class UserDetailsServiceImp implements UserDetailsService
 {

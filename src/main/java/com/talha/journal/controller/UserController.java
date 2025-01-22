@@ -49,13 +49,5 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-//    @DeleteMapping
-//    public ResponseEntity<?> deleteUser(@RequestBody User user){
-//        User userIn = userService.findByUserName(user.getUserName());
-//        if (userIn!=null){
-//            userService.d(userIn);
-//        }
-//        // successfully updated
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//    }
+
 }
