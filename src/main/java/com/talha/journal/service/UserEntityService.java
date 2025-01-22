@@ -20,10 +20,10 @@ public class UserEntityService {
     private UserRepository userRepository;
 
 //    @Lazy
-//    private BCryptPasswordEncoder passwordEncoder;
+    private static final BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     public void saveNewUser(User object){
-//        object.setPassword(passwordEncoder.encode(object.getPassword()));
+        object.setPassword(passwordEncoder.encode(object.getPassword()));
         object.setRoles(Arrays.asList("USER"));
         userRepository.save(object);
     }
@@ -43,6 +43,10 @@ public class UserEntityService {
 
     public void deleteUserById(ObjectId id){
         userRepository.deleteById(id);
+    }
+
+    public void deleteUserByName(String username){
+        userRepository.deleteByUserName(username);
     }
 
     public User findByUserName(String userName){

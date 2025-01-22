@@ -46,14 +46,26 @@ public class SpringSecurity {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
 
+        // Cross-Site Request Forgery
+
         return http.authorizeHttpRequests(request -> request
                         .requestMatchers("/public/**").permitAll()
-                        .requestMatchers("/journal/**", "/user/**").authenticated()
+                        .requestMatchers("/journal/**", "/users/**").authenticated()
                         .requestMatchers("/admin/**").hasRole("ADMIN")
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
                 .httpBasic(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable)
                 .build();
+
+
+//        return http.authorizeHttpRequests(request -> request
+//                        .requestMatchers("/public/**").permitAll()
+//                        .requestMatchers("/journal/**", "/users/**").authenticated()
+//                        .requestMatchers("/admin/**").hasRole("ADMIN")
+//                        .anyRequest().authenticated())
+//                .httpBasic(Customizer.withDefaults())
+//                .csrf(AbstractHttpConfigurer::disable)
+//                .build();
     }
 
 

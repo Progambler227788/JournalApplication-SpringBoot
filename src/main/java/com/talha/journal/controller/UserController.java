@@ -33,7 +33,7 @@ public class UserController {
     // I don't need now username manually as i've added authentication and it will come automatically
 
 
-    @PutMapping("/{uname}")
+    @PutMapping
     public ResponseEntity<?> updateUser(@RequestBody User newUser){
         // take name from authentication session
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -43,9 +43,21 @@ public class UserController {
 
             userIn.setUserName(newUser.getUserName());
             userIn.setPassword(newUser.getPassword());
-            userService.saveUser(userIn);
+            userService.saveNewUser(userIn);
         }
         // successfully updated
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
+    @DeleteMapping
+    public ResponseEntity<?> deleteUserByName(){
+        // take name from authentication session
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String uname = authentication.getName();
+
+        userService.deleteUserByName(uname);
+        // successfully deleted
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
