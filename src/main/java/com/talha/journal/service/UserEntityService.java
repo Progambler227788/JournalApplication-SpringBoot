@@ -28,6 +28,12 @@ public class UserEntityService {
         userRepository.save(object);
     }
 
+    public void saveAdminUser(User object){
+        object.setPassword(passwordEncoder.encode(object.getPassword()));
+        object.setRoles(Arrays.asList("ADMIN"));
+        userRepository.save(object);
+    }
+
     public void saveUser(User object){
         userRepository.save(object);
     }
