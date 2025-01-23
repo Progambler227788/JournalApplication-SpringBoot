@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: journal
+  data:
+    mongodb:
+      uri: mongodb+srv://talhaatif573:jTq7nZCY86JF8VYK@talha.x5yrf.mongodb.net/?retryWrites=true&w=majority&appName=Talha
+      database: journaldb
+      auto-index-creation: true
+      # Uncomment the following lines if using specific host and port
+      # host: localhost
+      # port: 27017
