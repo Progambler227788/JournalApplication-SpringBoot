@@ -1,9 +1,7 @@
 package com.talha.journal.entity;
 
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
+import lombok.*;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
@@ -15,6 +13,8 @@ import java.util.List;
 
 @Document(collection =  "users")
 @Data
+@Builder
+@AllArgsConstructor
 @NoArgsConstructor // it is need as in data class we have arguements based constructor, so for simple objects we need it
 public class User {
 
