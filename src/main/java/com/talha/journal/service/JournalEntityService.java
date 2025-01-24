@@ -4,6 +4,8 @@ import com.talha.journal.entity.JournalEntity;
 import com.talha.journal.entity.User;
 import com.talha.journal.repository.JournalEntryRepository;
 import org.bson.types.ObjectId;
+import org.slf4j.LoggerFactory;
+import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,6 +13,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+// Sl4j is logger abstraction framework
+// Simple Logging Facade for Java
 
 @Component
 public class JournalEntityService {
@@ -20,6 +24,11 @@ public class JournalEntityService {
 
     @Autowired
     private JournalEntryRepository journalEntryRepository;
+
+    // logger instance
+    // we need only one instance of this
+    // every logger is associated to specific class
+    private static final Logger logger = LoggerFactory.getLogger(JournalEntityService.class);
 
     // if i've reference of journal in user but it is not in actual journal
     // if i do post new journal, it will remove null values, spring will handle it
@@ -48,7 +57,8 @@ public class JournalEntityService {
 
         }
         catch (Exception e){
-            System.out.println(e.getMessage());
+            logger.info("Bug occurred in saving Journal");
+//            System.out.println(e.getMessage());
             throw new RuntimeException("An error occured in operation");
         }
     }

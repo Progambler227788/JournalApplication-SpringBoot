@@ -10,6 +10,7 @@ target/
 .factorypath
 .project
 .settings
+*.log
 .springBeans
 .sts4-cache
 

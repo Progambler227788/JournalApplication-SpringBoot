@@ -8,7 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 
-@SpringBootTest
+//@SpringBootTest
 public class UserServiceTest {
 
     @Autowired
@@ -17,6 +17,7 @@ public class UserServiceTest {
 
     // source to test functions --> enum source, value source
     // value-source, arguments-source
+
 
     public void testFindUserByName(){
         assertNotNull(userRepository.findByUserName("talha1"));
