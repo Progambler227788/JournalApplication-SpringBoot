@@ -23,7 +23,7 @@ import static org.mockito.Mockito.when;
 // for consistency and fast testing
 // when I use spring boot test then we need MockBean otherwise we can do that with Mock simple
 
-//@SpringBootTest // we need this because our autowired annotation properties will be null if we don't use it
+@SpringBootTest // we need this because our autowired annotation properties will be null if we don't use it
 public class UserDetailsServiceImplTest {
 
     @InjectMocks
@@ -46,7 +46,7 @@ public class UserDetailsServiceImplTest {
         MockitoAnnotations.initMocks(this);
     }
 
-    @Disabled
+//    @Disabled
     @Test
     void loadUserByUserNameTest(){
         when(userRepository.findByUserName(ArgumentMatchers.anyString())).thenReturn(User.builder().userName("talha").password("talhais").roles(new ArrayList<>()).build());
