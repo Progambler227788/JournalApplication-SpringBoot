@@ -9,3 +9,11 @@ spring:
       # Uncomment the following lines if using specific host and port
       # host: localhost
       # port: 27017
+  config:
+    import: optional:file:.env[.properties]
+weatherstack:
+  api:
+    url:
+      ${WEATHER_URL}
+    key:
+      ${WEATHER_KEY}
