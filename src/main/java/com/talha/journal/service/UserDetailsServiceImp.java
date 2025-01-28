@@ -6,11 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 // The UserDetailsService interface is used by Spring Security
 // to fetch user details from a custom source (like a database) when authenticating a user
-@Component
+@Service
 public class UserDetailsServiceImp implements UserDetailsService
 {
     @Autowired

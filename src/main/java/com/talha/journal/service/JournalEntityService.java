@@ -7,7 +7,7 @@ import org.bson.types.ObjectId;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import java.util.Optional;
 // Sl4j is logger abstraction framework
 // Simple Logging Facade for Java
 
-@Component
+@Service
 public class JournalEntityService {
 
     @Autowired
