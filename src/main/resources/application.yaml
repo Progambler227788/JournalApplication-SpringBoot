@@ -3,7 +3,7 @@ spring:
     name: journal
   data:
     mongodb:
-      uri: mongodb+srv://talhaatif573:jTq7nZCY86JF8VYK@talha.x5yrf.mongodb.net/?retryWrites=true&w=majority&appName=Talha
+      uri: ${MONGO_URI}
       database: journaldb
       auto-index-creation: true
       # Uncomment the following lines if using specific host and port
@@ -11,6 +11,19 @@ spring:
       # port: 27017
   config:
     import: optional:file:.env[.properties]
+
+  mail:
+    host: smtp.gmail.com
+    port: 587 # using encryption so it is 587 port
+    username: ${EMAIL_USER}
+    password: ${EMAIL_PASS}
+    properties:
+       mail:
+         smtp:
+           auth: true
+           starttls:
+             enable: true # for encryption-decryption
+             required: true
 weatherstack:
   api:
     url:

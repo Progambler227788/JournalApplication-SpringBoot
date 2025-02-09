@@ -1,6 +1,7 @@
 package com.talha.journal.controller;
 
 import com.talha.journal.entity.User;
+import com.talha.journal.service.EmailService;
 import com.talha.journal.service.UserEntityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,9 @@ public class AdminController {
     @Autowired
     private UserEntityService userEntityService;
 
+    @Autowired
+    private EmailService emailService;
+
     @GetMapping("/all-users")
     public ResponseEntity<?> getAllUsers() {
         // gives all users
@@ -33,4 +37,19 @@ public class AdminController {
 
         userEntityService.saveAdminUser(admin);
     }
+
+    @PostMapping("/sendEmail")
+    public ResponseEntity<String> sendEmail(@RequestParam String to,
+                                            @RequestParam String subject,
+                                            @RequestParam String body) {
+        // Exception handling
+        try {
+            emailService.sendEmail(to, subject, body);
+            return ResponseEntity.ok("Email sent successfully!");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Failed to send email: " + e.getMessage());
+        }
+    }
+
 }

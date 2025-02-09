@@ -1,6 +1,7 @@
 package com.talha.journal.service;
 
 import com.talha.journal.api.WeatherResponse;
+import com.talha.journal.cache.AppCache;
 import com.talha.journal.exceptions.WeatherException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -19,11 +20,17 @@ public class WeatherService {
     private RestTemplate restTemplate; // for hitting https requests like hitting for apis
 
 
+//    @Autowired
+//    private AppCache appCache;
+
+
     @Value("${weatherstack.api.url}")
     private  String apiUrl;
 
     @Value("${weatherstack.api.key}")
     private  String apiKey ;
+    // we can't make above fields static as string works with insance level fields not with static ones
+    // dependency injection works only with instances not with fields those belongs to a class
 
 
     public WeatherResponse getWeather(String city) {
