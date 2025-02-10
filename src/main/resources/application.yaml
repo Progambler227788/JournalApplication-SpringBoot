@@ -24,6 +24,9 @@ spring:
            starttls:
              enable: true # for encryption-decryption
              required: true
+  redis:
+    host: localhost
+    port: 6379 #  local port name here
 weatherstack:
   api:
     url:

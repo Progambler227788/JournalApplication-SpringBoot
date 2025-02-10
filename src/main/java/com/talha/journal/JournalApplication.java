@@ -10,7 +10,6 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.client.RestTemplate;
 
 @SpringBootApplication
-
 public class JournalApplication {
 
 	public static void main(String[] args) {
@@ -21,8 +20,6 @@ public class JournalApplication {
 	public RestTemplate creatingRestInstance(){
 		return new RestTemplate();
 	}
-
-
 
 
 }

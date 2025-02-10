@@ -1,23 +1,28 @@
 package com.talha.journal.api;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import lombok.extern.jackson.Jacksonized;
 
 import java.util.List;
 
-@Getter
-@Setter public class WeatherResponse {
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class WeatherResponse {
     private Current current;
 
-    @Getter
-    @Setter
-    public class Current {
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class Current {
         private int temperature;
+
         @JsonProperty("weather_descriptions")
         private List<String> weatherDescriptions;
+
         private int feelslike;
     }
-
-
 }
+
