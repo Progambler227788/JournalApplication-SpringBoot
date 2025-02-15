@@ -6,6 +6,10 @@ spring:
       uri: ${MONGO_URI}
       database: journaldb
       auto-index-creation: true
+    redis:
+      host: ${REDIS_URI}
+      port: ${REDIS_PORT}
+      password: ${REDIS_PASS}
       # Uncomment the following lines if using specific host and port
       # host: localhost
       # port: 27017
@@ -24,9 +28,9 @@ spring:
            starttls:
              enable: true # for encryption-decryption
              required: true
-  redis:
-    host: localhost
-    port: 6379 #  local port name here
+
+#    host: localhost
+#    port: 6379 #  local port name here
 weatherstack:
   api:
     url:
